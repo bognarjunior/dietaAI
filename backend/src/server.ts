@@ -13,7 +13,7 @@ app.setErrorHandler((error, request, reply) => {
 const start = async () => {
   app.register(cors);
   app.register(routes);
-  
+
   try {
     await app.listen({ port: 3333, host: '0.0.0.0' });
     console.log("Servidor rodando na porta 3333");
