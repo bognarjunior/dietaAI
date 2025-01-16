@@ -12,7 +12,7 @@ export async function routes(fastify: FastifyInstance, opts: FastifyPluginOption
     reply.send({ hello: 'world' });
   });
 
-  fastify.get('/create', async (request: FastifyRequest, reply: FastifyReply) => {
+  fastify.post('/create', async (request: FastifyRequest, reply: FastifyReply) => {
     return new CreateNutritionController().handle(request, reply);
   });
 }
