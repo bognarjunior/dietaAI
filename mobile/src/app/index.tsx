@@ -1,6 +1,9 @@
 import { Text, View, Image, Pressable, StatusBar } from "react-native";
-import { styles } from "./style";
 import React from "react";
+
+import { Link } from "expo-router";
+
+import { styles } from "./style";
 
 export default function Index() {
   return (
@@ -19,9 +22,11 @@ export default function Index() {
 
         <Text style={styles.text}>Sua dieta personalizada com inteligência artificial</Text>
 
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>Gerar dieta</Text>
-        </Pressable>
+        <Link href={"/step"} asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Gerar dieta</Text>
+          </Pressable>
+        </Link>
       </View>
     </>
   );
