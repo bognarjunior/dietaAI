@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Pressable } from 'react-native';
 import React from 'react';
 
 import Header from '@/app/components/header';
@@ -61,6 +61,10 @@ export default function Step() {
           placeholder='Ex: 28' 
           keyboardType='numeric'
         />
+
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>Avançar</Text>
+        </Pressable>
       </ScrollView>
     </View>
   )
