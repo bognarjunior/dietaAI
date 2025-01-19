@@ -1,10 +1,38 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, TextInput, KeyboardTypeOptions } from 'react-native';
+import React from 'react';
 
-export default function Input() {
+import { Controller } from 'react-hook-form';
+
+import { styles } from './style';
+
+interface Props {
+  label?: string;
+  name: string;
+  control: any;
+  placeholder?: string;
+  rules?: object;
+  error?: string;
+  keyboardType?: KeyboardTypeOptions;
+}
+
+export default function Input({ label, name, control, placeholder, rules, error, keyboardType }: Props) {
   return (
-    <View>
-      <Text>Input</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>{label}</Text>
+      <Controller
+        control={control}
+        name={name}
+        rules={rules} 
+        render={({ field: { onChange, value, onBlur } }) => (
+          <TextInput
+            placeholder={placeholder}
+            value={value}
+            onChangeText={onChange}
+            onBlur={onBlur}
+            keyboardType={keyboardType}
+          />  
+        )}
+      />
     </View>
   )
 }
