@@ -25,6 +25,7 @@ export default function Input({ label, name, control, placeholder, rules, error,
         rules={rules} 
         render={({ field: { onChange, value, onBlur } }) => (
           <TextInput
+            style={styles.input}
             placeholder={placeholder}
             value={value}
             onChangeText={onChange}
@@ -33,6 +34,7 @@ export default function Input({ label, name, control, placeholder, rules, error,
           />  
         )}
       />
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   )
 }

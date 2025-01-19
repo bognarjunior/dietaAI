@@ -37,6 +37,30 @@ export default function Step() {
           placeholder='Digite seu nome...' 
           keyboardType='default'
         />
+        <Input
+          name="weight"
+          control={control}
+          label="Peso"
+          error={errors.name?.message}
+          placeholder='Ex: 75' 
+          keyboardType='numeric'
+        />
+        <Input
+          name="height"
+          control={control}
+          label="Altura"
+          error={errors.height?.message}
+          placeholder='Ex: 180' 
+          keyboardType='numeric'
+        />
+        <Input
+          name="age"
+          control={control}
+          label="Idade"
+          error={errors.age?.message}
+          placeholder='Ex: 28' 
+          keyboardType='numeric'
+        />
       </ScrollView>
     </View>
   )

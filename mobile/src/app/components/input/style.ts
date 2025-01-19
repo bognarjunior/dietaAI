@@ -12,4 +12,15 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 8,
   },
+  input: {
+    backgroundColor: colors.white,
+    height: 44,
+    paddingHorizontal: 10,
+    borderRadius: 6,
+    color: colors.black
+  },
+  errorText: {
+    color: colors.crimson,
+    marginTop: 4,
+  }
 });
