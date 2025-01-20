@@ -9,12 +9,21 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import { styles } from './style';
+import { router } from 'expo-router';
 
 const schema = z.object({
-  name: z.string().min(3, 'O nome precisa ter no mínimo 3 caracteres'),
-  age: z.string().min(1, 'O idade é obrigatório'),
-  height: z.string().min(1, 'O peso é obrigatório'),
-  weight: z.string().min(1, 'O altura é obrigatório'),
+  name: z.string({
+    required_error: "Nome é obrigatório",
+  }).min(3, {message: "O nome precisa ter no mínimo 3 caracteres"}),
+  age: z.string({
+    required_error: "O idade é obrigatório",
+  }).min(1, {message:'O idade é obrigatório'}),
+  height: z.string({
+    required_error: "O peso é obrigatório",
+  }).min(1, {message:'O peso é obrigatório'}),
+  weight: z.string({
+    required_error: "O altura é obrigatório",
+  }).min(1, {message:'O altura é obrigatório'}),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -25,7 +34,13 @@ export default function Step() {
     resolver: zodResolver(schema),
   });
 
+  function handleCreate(data: FormData) {
+    console.log(data);
+    router.push('/create');
+  };
+
   return (
+    
     <View style={styles.container}>
       <Header step="Passo 1" title="Vamos começar!" />
       <ScrollView style={styles.content}>
@@ -41,7 +56,7 @@ export default function Step() {
           name="weight"
           control={control}
           label="Peso"
-          error={errors.name?.message}
+          error={errors.weight?.message}
           placeholder='Ex: 75' 
           keyboardType='numeric'
         />
@@ -62,7 +77,7 @@ export default function Step() {
           keyboardType='numeric'
         />
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={handleSubmit(handleCreate)}>
           <Text style={styles.buttonText}>Avançar</Text>
         </Pressable>
       </ScrollView>
