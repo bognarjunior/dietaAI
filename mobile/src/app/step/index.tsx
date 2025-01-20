@@ -8,7 +8,7 @@ import Input from '@/app/components/input';
 
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { styles } from './style';
 import { router } from 'expo-router';
