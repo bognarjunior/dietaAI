@@ -1,12 +1,14 @@
 import { View, Text, ScrollView, Pressable } from 'react-native';
 import React from 'react';
 
+import { useData } from '@/store/data';
+
 import Header from '@/app/components/header';
 import Input from '@/app/components/input';
 
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 
 import { styles } from './style';
 import { router } from 'expo-router';
@@ -34,8 +36,15 @@ export default function Step() {
     resolver: zodResolver(schema),
   });
 
+  const setPageOne = useData(state => state.setPageOne);
+
   function handleCreate(data: FormData) {
-    console.log(data);
+    setPageOne({
+      name: data.name,
+      weight: data.weight,
+      height: data.height,
+      age: data.age 
+    });
     router.push('/create');
   };
 
