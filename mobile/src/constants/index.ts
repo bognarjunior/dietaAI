@@ -13,7 +13,7 @@ const levelOptions = [
 const objectiveOptions = [
   { label: 'Emagrecer', value: 'Emagrecer' },
   { label: 'Hipertrofia', value: 'Hipertrofia' },
-  { label: 'Hipertroia mais definição', value: 'Hipertroia mais definição' },
+  { label: 'Hipertrofia mais definição', value: 'Hipertrofia mais definição' },
   { label: 'Definição', value: 'Definição' },
   { label: 'Ganhar Massa', value: 'Ganhar Massa' },
 ];

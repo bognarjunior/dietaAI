@@ -36,7 +36,7 @@ export default function Create() {
         objective: data.objective,
         level: data.level,
       });
-      router.push('/create');
+      router.push('/nutrition');
     };
 
   return (
