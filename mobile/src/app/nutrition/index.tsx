@@ -3,24 +3,27 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 
-import { useData } from '@/store/data';
+import { Data, useData } from '@/store/data';
 import api from '@/app/services/api';
 import { styles } from './style';
 
+interface ResponseData {
+  data: Data
+}
 
 export default function Nutrition() {
   const user =  useData((state) => state.data)
   console.log('user', user);
   const {data, isFetching, error} = useQuery({
-    queryKey: ['create'],
+    queryKey: ['nutrition'],
     queryFn: async () => {
-      //try {
+      try {
 
-        //if(!user) {
-         // throw new Error('Falha ao carregar os dados');
-       /// }
-
-        const response = await api.post('/create', {
+        if(!user) {
+          throw new Error('Falha ao carregar os dados');
+        }
+        console.log('Entra aqui')
+        const response = await api.post<ResponseData>('/create', {
           name: user.name,
           weight: user.weight,
           height: user.height,
@@ -29,12 +32,12 @@ export default function Nutrition() {
           level: user.level,
           objective: user.objective,
         });
-        console.log(response.data.data);
-        return response.data.data;
+        console.log('response',response.data);
+        return response.data;
 
-      //} catch (error) {
-        //console.log('Erro',error);
-      //}
+      } catch (error) {
+        console.log('Erro',error);
+      }
     }
   });
 
